@@ -4,9 +4,15 @@ import mount from './vdom/mount';
 import diff from './vdom/diff';
 import { PropTypes } from './vdom/propTypes';
 
+const Color = ['red', 'blue', 'green'];
+
+function randInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 const createVApp = (props) =>
-    h('div', { id: 'app', dataCount: props.count }, [
-        h('input'),
+    h('div', { id: 'app', dataCount: props.count, style: { backgroundColor: Color[randInt(0,2)] } }, [
+        h('input', { style: { backgroundColor: Color[randInt(0, 2)] } }),
         `${props.count}`,
         ...Array.from(
             { length: props.count },

@@ -18,7 +18,7 @@ const diffAttrs = (oldAttrs, newAttrs) => {
                 const event = k.substring(2);
                 const handler = v.bind($node);
                 $node.addEventListener(event, handler);
-            } else if (k === "style") {
+            } else if (k === "style" && typeof v === 'object') {
                 Object.assign($node.style, v); // v is an object! v is not a string!
             } else if (k === "$class") {
                 $node.setAttribute('class', $node[k]);

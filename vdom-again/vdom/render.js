@@ -7,7 +7,7 @@ const renderElem = ({ tagName, attrs, children }) => {
             const event = k.substr(2);
             const handler = v.bind($el);
             $el.addEventListener(event, handler);
-        } else if (k === "style") {
+        } else if (k === "style" && typeof v === 'object') {
             Object.assign($el.style, v); // v is an object! v is not a string!
         } else if (k === "$class") {
             $el.setAttribute('class', $el[k]);
